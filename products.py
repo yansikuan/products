@@ -1,11 +1,18 @@
+import os # operation system
+
 products = []
-with open('products.csv', 'r') as f:
-	for line in f:
-		if '商品' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'):
+	print('yeah! Found it.')
+	with open('products.csv', 'r', encoding = 'utf-8') as f:
+		for line in f:
+			if '商品' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)
+else:
+	print('Doesnot exist.')
+
 
 
 while True:
