@@ -1,4 +1,13 @@
 products = []
+with open('products.csv', 'r') as f:
+	for line in f:
+		if '商品' in line:
+			continue
+		name, price = line.strip().split(',')
+		products.append([name, price])
+print(products)
+
+
 while True:
 	name = input('Please enter products name: ')
 	if name == 'q':
@@ -16,5 +25,5 @@ for p in products:
 
 with open('Products.csv', 'w', encoding = 'utf-8') as f:
 	f.write('商品,价钱\n')
-	for p in products:
+	for p in products :
 		f.write(p[0] + ',' + p[1] + '\n')
